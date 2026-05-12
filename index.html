@@ -68,15 +68,7 @@
   .section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; padding-top: 4px; }
   .submit-btn { width: 100%; padding: 16px; background: var(--green); color: white; border: none; border-radius: 12px; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; transition: background .15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
   .submit-btn:hover { background: #178a65; }
-  .submit-btn:disabled { background: #a0cfc2; cursor: not-allowed; }
   .submit-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; line-height: 1.5; }
-  .success-card { display: none; max-width: 560px; margin: 24px auto 0; padding: 0 24px; }
-  .success-inner { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 24px; text-align: center; }
-  .success-check { width: 64px; height: 64px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
-  .success-check svg { width: 32px; height: 32px; fill: var(--green); }
-  .success-inner h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; color: var(--text); margin-bottom: 10px; }
-  .success-inner p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px; }
-  .share-again-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--green-light); color: var(--green-dark); border: 1px solid rgba(29,158,117,0.2); border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; font-family: 'DM Sans', sans-serif; }
   .footer { max-width: 560px; margin: 32px auto 0; padding: 0 24px; text-align: center; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
   @media (max-width: 400px) { .two-col { grid-template-columns: 1fr; } .rate-options { grid-template-columns: 1fr; } .trades-grid { grid-template-columns: 1fr; } }
 </style>
@@ -126,7 +118,7 @@
 </div>
 
 <div class="form-wrap">
-  <div class="form-card" id="formCard">
+  <div class="form-card">
     <div class="form-head">
       <div class="form-head-icon">
         <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -137,16 +129,19 @@
       </div>
     </div>
 
-    <form class="form-body" id="referralForm">
+    <form class="form-body"
+          method="POST"
+          action="https://formspree.io/f/xnjwwwop">
+
       <div class="section-title">Your details</div>
       <div class="two-col">
         <div class="field-group">
           <label>Your name <span class="req">*</span></label>
-          <input type="text" id="referrerName" placeholder="E.g. Amaka Obi" required>
+          <input type="text" name="Your Name" placeholder="E.g. Amaka Obi" required>
         </div>
         <div class="field-group">
           <label>Your phone <span class="req">*</span></label>
-          <input type="tel" id="referrerPhone" placeholder="08XXXXXXXXX" required>
+          <input type="tel" name="Your Phone" placeholder="08XXXXXXXXX" required>
         </div>
       </div>
 
@@ -156,40 +151,40 @@
       <div class="two-col">
         <div class="field-group">
           <label>Their name <span class="req">*</span></label>
-          <input type="text" id="handymanName" placeholder="Full name" required>
+          <input type="text" name="Handyman Name" placeholder="Full name" required>
         </div>
         <div class="field-group">
           <label>Their phone <span class="req">*</span></label>
-          <input type="tel" id="handymanPhone" placeholder="08XXXXXXXXX" required>
+          <input type="tel" name="Handyman Phone" placeholder="08XXXXXXXXX" required>
         </div>
       </div>
 
       <div class="field-group">
         <label>Trade / Skill <span class="req">*</span></label>
-        <select id="handymanTrade" required>
+        <select name="Trade" required>
           <option value="" disabled selected>Select their main trade</option>
-          <option value="plumber">Plumber</option>
-          <option value="electrician">Electrician</option>
-          <option value="carpenter">Carpenter</option>
-          <option value="painter">Painter</option>
-          <option value="multiple">Multiple trades</option>
+          <option value="Plumber">Plumber</option>
+          <option value="Electrician">Electrician</option>
+          <option value="Carpenter">Carpenter</option>
+          <option value="Painter">Painter</option>
+          <option value="Multiple trades">Multiple trades</option>
         </select>
       </div>
 
       <div class="field-group">
         <label>Their area in Abuja <span class="req">*</span></label>
-        <input type="text" id="handymanLocation" placeholder="E.g. Wuse 2, Garki, Gwarinpa, Kubwa…" required>
+        <input type="text" name="Area in Abuja" placeholder="E.g. Wuse 2, Garki, Gwarinpa, Kubwa…" required>
       </div>
 
       <div class="field-group">
         <label>How do you know them? <span class="hint">(optional)</span></label>
-        <select id="relationship">
+        <select name="Relationship">
           <option value="" disabled selected>Select…</option>
-          <option value="used_personally">They worked at my home</option>
-          <option value="family">Family member</option>
-          <option value="friend_vouched">A trusted friend recommended them</option>
-          <option value="neighbour">My neighbour used them</option>
-          <option value="other">Other</option>
+          <option value="They worked at my home">They worked at my home</option>
+          <option value="Family member">Family member</option>
+          <option value="A trusted friend recommended them">A trusted friend recommended them</option>
+          <option value="My neighbour used them">My neighbour used them</option>
+          <option value="Other">Other</option>
         </select>
       </div>
 
@@ -199,29 +194,29 @@
       <div class="field-group">
         <label>Work quality <span class="req">*</span></label>
         <div class="rate-options">
-          <label class="rate-opt"><input type="radio" name="quality" value="excellent"><span class="radio-circle"></span><span class="rate-opt-text">⭐ Excellent</span></label>
-          <label class="rate-opt"><input type="radio" name="quality" value="good"><span class="radio-circle"></span><span class="rate-opt-text">👍 Good</span></label>
-          <label class="rate-opt"><input type="radio" name="quality" value="average"><span class="radio-circle"></span><span class="rate-opt-text">🤷 Average</span></label>
-          <label class="rate-opt"><input type="radio" name="quality" value="not_sure"><span class="radio-circle"></span><span class="rate-opt-text">Not sure</span></label>
+          <label class="rate-opt"><input type="radio" name="Work Quality" value="Excellent" required><span class="radio-circle"></span><span class="rate-opt-text">⭐ Excellent</span></label>
+          <label class="rate-opt"><input type="radio" name="Work Quality" value="Good"><span class="radio-circle"></span><span class="rate-opt-text">👍 Good</span></label>
+          <label class="rate-opt"><input type="radio" name="Work Quality" value="Average"><span class="radio-circle"></span><span class="rate-opt-text">🤷 Average</span></label>
+          <label class="rate-opt"><input type="radio" name="Work Quality" value="Not sure"><span class="radio-circle"></span><span class="rate-opt-text">Not sure</span></label>
         </div>
       </div>
 
       <div class="field-group">
         <label>Reliability <span class="req">*</span></label>
         <div class="rate-options">
-          <label class="rate-opt"><input type="radio" name="reliability" value="very_reliable"><span class="radio-circle"></span><span class="rate-opt-text">Very reliable</span></label>
-          <label class="rate-opt"><input type="radio" name="reliability" value="mostly_reliable"><span class="radio-circle"></span><span class="rate-opt-text">Mostly reliable</span></label>
-          <label class="rate-opt"><input type="radio" name="reliability" value="sometimes_late"><span class="radio-circle"></span><span class="rate-opt-text">Sometimes late</span></label>
-          <label class="rate-opt"><input type="radio" name="reliability" value="not_sure"><span class="radio-circle"></span><span class="rate-opt-text">Don't know</span></label>
+          <label class="rate-opt"><input type="radio" name="Reliability" value="Very reliable" required><span class="radio-circle"></span><span class="rate-opt-text">Very reliable</span></label>
+          <label class="rate-opt"><input type="radio" name="Reliability" value="Mostly reliable"><span class="radio-circle"></span><span class="rate-opt-text">Mostly reliable</span></label>
+          <label class="rate-opt"><input type="radio" name="Reliability" value="Sometimes late"><span class="radio-circle"></span><span class="rate-opt-text">Sometimes late</span></label>
+          <label class="rate-opt"><input type="radio" name="Reliability" value="Don't know"><span class="radio-circle"></span><span class="rate-opt-text">Don't know</span></label>
         </div>
       </div>
 
       <div class="field-group">
         <label>Anything else we should know? <span class="hint">(optional)</span></label>
-        <textarea id="notes" placeholder="E.g. Very honest, always cleans up after himself…"></textarea>
+        <textarea name="Additional Notes" placeholder="E.g. Very honest, always cleans up after himself…"></textarea>
       </div>
 
-      <button type="button" class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+      <button type="submit" class="submit-btn">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
         Submit referral
       </button>
@@ -234,90 +229,10 @@
   </div>
 </div>
 
-<div class="success-card" id="successCard">
-  <div class="success-inner">
-    <div class="success-check">
-      <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-    </div>
-    <h2>Referral submitted! 🎉</h2>
-    <p>Thank you. We'll verify <strong id="successName"></strong> and reach out to them directly. If they join HandyDendy, you'll hear from us.</p>
-    <a href="#" class="share-again-btn" onclick="location.reload(); return false;">Refer another handyman</a>
-  </div>
-</div>
-
 <div class="footer">
   <strong>HandyDendy</strong> · Abuja's verified trades platform<br>
   All submissions are confidential. Handymen are contacted only after your referral is reviewed.
 </div>
-
-<!-- Hidden iframe to absorb the form POST response -->
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-<script>
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEhw_ITfFgMmigzxNkgT4yj245mQrqUW-gAOr4n134FUca4yClL3ZtHt94K8624Q8a/exec';
-
-  function handleSubmit() {
-    var referrerName  = document.getElementById('referrerName').value.trim();
-    var referrerPhone = document.getElementById('referrerPhone').value.trim();
-    var handymanName  = document.getElementById('handymanName').value.trim();
-    var handymanPhone = document.getElementById('handymanPhone').value.trim();
-    var trade         = document.getElementById('handymanTrade').value;
-    var location      = document.getElementById('handymanLocation').value.trim();
-    var quality       = document.querySelector('input[name="quality"]:checked');
-    var reliability   = document.querySelector('input[name="reliability"]:checked');
-    var notes         = document.getElementById('notes').value.trim();
-
-    if (!referrerName)  { alert('Please enter your name.'); return; }
-    if (!referrerPhone) { alert('Please enter your phone number.'); return; }
-    if (!handymanName)  { alert('Please enter the handyman\'s name.'); return; }
-    if (!handymanPhone) { alert('Please enter the handyman\'s phone number.'); return; }
-    if (!trade)         { alert('Please select their trade.'); return; }
-    if (!location)      { alert('Please enter their area in Abuja.'); return; }
-    if (!quality)       { alert('Please rate their work quality.'); return; }
-    if (!reliability)   { alert('Please rate their reliability.'); return; }
-
-    var btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-
-    var payload = JSON.stringify({
-      handyman_name:  handymanName,
-      handyman_phone: handymanPhone,
-      trade:          trade,
-      location:       location,
-      quality:        quality.value,
-      reliability:    reliability.value,
-      notes:          notes,
-      referrer_name:  referrerName,
-      referrer_phone: referrerPhone
-    });
-
-    // Create and submit a hidden form — bypasses CORS completely
-    var form = document.createElement('form');
-    form.setAttribute('method', 'POST');
-    form.setAttribute('action', SCRIPT_URL);
-    form.setAttribute('target', 'hidden_iframe');
-    form.style.display = 'none';
-
-    var field = document.createElement('input');
-    field.setAttribute('type', 'hidden');
-    field.setAttribute('name', 'data');
-    field.setAttribute('value', payload);
-    form.appendChild(field);
-
-    document.body.appendChild(form);
-
-    // Show success after 2 seconds (iframe load is not reliably detectable cross-origin)
-    setTimeout(function() {
-      document.getElementById('formCard').style.display = 'none';
-      document.getElementById('successCard').style.display = 'block';
-      document.getElementById('successName').textContent = handymanName;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 2000);
-
-    form.submit();
-  }
-</script>
 
 </body>
 </html>
