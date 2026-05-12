@@ -11,514 +11,82 @@
     --green-dark: #085041;
     --green-light: #E1F5EE;
     --green-mid: #5DCAA5;
-    --amber: #EF9F27;
     --text: #1a1a18;
     --text-muted: #6b6b67;
     --bg: #f7f6f2;
-    --white: #ffffff;
     --border: rgba(0,0,0,0.09);
     --radius: 16px;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding-bottom: 60px;
-  }
-
-  /* ── Header ── */
-  .header {
-    background: var(--green-dark);
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .header-noise {
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .header-inner {
-    position: relative;
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 40px 24px 36px;
-  }
-
-  .logo-mark {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-
-  .logo-icon {
-    width: 36px; height: 36px;
-    background: var(--green);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-  }
-
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 60px; }
+  .header { background: var(--green-dark); padding: 0; position: relative; overflow: hidden; }
+  .header-inner { position: relative; max-width: 560px; margin: 0 auto; padding: 40px 24px 36px; }
+  .logo-mark { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+  .logo-icon { width: 36px; height: 36px; background: var(--green); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
   .logo-icon svg { width: 20px; height: 20px; fill: white; }
-
-  .logo-text {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    color: white;
-    letter-spacing: -0.3px;
-  }
-
-  .header-tag {
-    display: inline-block;
-    background: rgba(93,202,165,0.2);
-    color: var(--green-mid);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 100px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(93,202,165,0.3);
-  }
-
-  .header h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(28px, 6vw, 38px);
-    font-weight: 800;
-    color: white;
-    line-height: 1.15;
-    margin-bottom: 14px;
-    letter-spacing: -0.5px;
-  }
-
-  .header h1 span {
-    color: var(--green-mid);
-  }
-
-  .header-sub {
-    font-size: 15px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.65;
-    font-weight: 300;
-    max-width: 420px;
-  }
-
-  .header-strip {
-    background: var(--green);
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: white;
-  }
-
-  .header-strip svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.8); flex-shrink: 0; }
-
-  /* ── Trust pills ── */
-  .trust-row {
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 20px 24px 0;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .trust-pill {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 6px 12px;
-    font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 400;
-  }
-
-  .trust-pill .dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--green);
-    flex-shrink: 0;
-  }
-
-  /* ── Trades section ── */
-  .section-label {
-    max-width: 560px;
-    margin: 28px auto 0;
-    padding: 0 24px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  .trades-grid {
-    max-width: 560px;
-    margin: 10px auto 0;
-    padding: 0 24px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .trade-card {
-    background: white;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: border-color .15s, box-shadow .15s;
-  }
-
-  .trade-card:hover { border-color: var(--green-mid); }
-
-  .trade-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    font-size: 20px;
-  }
-
-  .trade-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--text);
-  }
-
-  .trade-desc {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 2px;
-    line-height: 1.4;
-  }
-
-  /* ── Form ── */
-  .form-wrap {
-    max-width: 560px;
-    margin: 24px auto 0;
-    padding: 0 24px;
-  }
-
-  .form-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-
-  .form-head {
-    background: var(--green-light);
-    border-bottom: 1px solid rgba(29,158,117,0.15);
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .form-head-icon {
-    width: 36px; height: 36px;
-    background: var(--green);
-    border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-
+  .logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: white; }
+  .header-tag { display: inline-block; background: rgba(93,202,165,0.2); color: var(--green-mid); font-size: 12px; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 16px; border: 1px solid rgba(93,202,165,0.3); }
+  .header h1 { font-family: 'Syne', sans-serif; font-size: clamp(28px, 6vw, 38px); font-weight: 800; color: white; line-height: 1.15; margin-bottom: 14px; letter-spacing: -0.5px; }
+  .header h1 span { color: var(--green-mid); }
+  .header-sub { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.65; font-weight: 300; max-width: 420px; }
+  .header-strip { background: var(--green); padding: 12px 24px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; font-weight: 500; color: white; }
+  .trust-row { max-width: 560px; margin: 20px auto 0; padding: 0 24px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .trust-pill { display: flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--border); border-radius: 100px; padding: 6px 12px; font-size: 12px; color: var(--text-muted); }
+  .trust-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .section-label { max-width: 560px; margin: 28px auto 0; padding: 0 24px; font-size: 11px; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-muted); }
+  .trades-grid { max-width: 560px; margin: 10px auto 0; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trade-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 16px; display: flex; align-items: center; gap: 12px; }
+  .trade-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+  .trade-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 14px; color: var(--text); }
+  .trade-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+  .form-wrap { max-width: 560px; margin: 24px auto 0; padding: 0 24px; }
+  .form-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .form-head { background: var(--green-light); border-bottom: 1px solid rgba(29,158,117,0.15); padding: 18px 24px; display: flex; align-items: center; gap: 12px; }
+  .form-head-icon { width: 36px; height: 36px; background: var(--green); border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .form-head-icon svg { width: 18px; height: 18px; fill: white; }
-
-  .form-head-text h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--green-dark);
-  }
-
-  .form-head-text p {
-    font-size: 12px;
-    color: #0F6E56;
-    margin-top: 2px;
-  }
-
-  .form-body {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .field-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  label {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  label .req {
-    color: var(--green);
-    font-size: 15px;
-    line-height: 1;
-  }
-
-  label .hint {
-    font-weight: 300;
-    color: var(--text-muted);
-    font-size: 12px;
-    margin-left: 2px;
-  }
-
-  input, select, textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    color: var(--text);
-    background: white;
-    transition: border-color .15s, box-shadow .15s;
-    outline: none;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
-  }
-
-  select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b67' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 36px;
-    cursor: pointer;
-  }
-
+  .form-head-text h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: var(--green-dark); }
+  .form-head-text p { font-size: 12px; color: #0F6E56; margin-top: 2px; }
+  .form-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+  .field-group { display: flex; flex-direction: column; gap: 6px; }
+  label { font-size: 13px; font-weight: 500; color: var(--text); display: flex; align-items: center; gap: 5px; }
+  label .req { color: var(--green); font-size: 15px; line-height: 1; }
+  label .hint { font-weight: 300; color: var(--text-muted); font-size: 12px; margin-left: 2px; }
+  input, select, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text); background: white; transition: border-color .15s; outline: none; -webkit-appearance: none; appearance: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(29,158,117,0.12); }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b67' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
   textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
-
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-  .rate-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  .rate-opt {
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 10px 14px;
-    cursor: pointer;
-    transition: all .15s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
+  .rate-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .rate-opt { border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 14px; cursor: pointer; transition: all .15s; display: flex; align-items: center; gap: 8px; }
   .rate-opt input[type="radio"] { display: none; }
-
-  .rate-opt .radio-circle {
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    flex-shrink: 0;
-    transition: all .15s;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .rate-opt input:checked ~ .radio-circle {
-    background: var(--green);
-    border-color: var(--green);
-  }
-
-  .rate-opt input:checked ~ .radio-circle::after {
-    content: '';
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: white;
-  }
-
-  .rate-opt:has(input:checked) {
-    border-color: var(--green);
-    background: var(--green-light);
-  }
-
+  .rate-opt .radio-circle { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; transition: all .15s; display: flex; align-items: center; justify-content: center; }
+  .rate-opt input:checked ~ .radio-circle { background: var(--green); border-color: var(--green); }
+  .rate-opt input:checked ~ .radio-circle::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: white; }
+  .rate-opt:has(input:checked) { border-color: var(--green); background: var(--green-light); }
   .rate-opt-text { font-size: 13px; color: var(--text); }
-
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 4px 0;
-  }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    padding-top: 4px;
-  }
-
-  .submit-btn {
-    width: 100%;
-    padding: 16px;
-    background: var(--green);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background .15s, transform .1s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    letter-spacing: -0.2px;
-  }
-
+  .divider { height: 1px; background: var(--border); margin: 4px 0; }
+  .section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; padding-top: 4px; }
+  .submit-btn { width: 100%; padding: 16px; background: var(--green); color: white; border: none; border-radius: 12px; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; transition: background .15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
   .submit-btn:hover { background: #178a65; }
-  .submit-btn:active { transform: scale(0.99); }
-  .submit-btn svg { width: 18px; height: 18px; fill: white; }
-
-  .submit-note {
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 10px;
-    line-height: 1.5;
-  }
-
-  /* ── Success state ── */
-  .success-card {
-    display: none;
-    max-width: 560px;
-    margin: 24px auto 0;
-    padding: 0 24px;
-  }
-
-  .success-inner {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 40px 24px;
-    text-align: center;
-  }
-
-  .success-check {
-    width: 64px; height: 64px;
-    background: var(--green-light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-  }
-
+  .submit-btn:disabled { background: #a0cfc2; cursor: not-allowed; }
+  .submit-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; line-height: 1.5; }
+  .success-card { display: none; max-width: 560px; margin: 24px auto 0; padding: 0 24px; }
+  .success-inner { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 24px; text-align: center; }
+  .success-check { width: 64px; height: 64px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
   .success-check svg { width: 32px; height: 32px; fill: var(--green); }
-
-  .success-inner h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-
-  .success-inner p {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.65;
-    margin-bottom: 24px;
-  }
-
-  .share-again-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background: var(--green-light);
-    color: var(--green-dark);
-    border: 1px solid rgba(29,158,117,0.2);
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-    transition: background .15s;
-  }
-
-  .share-again-btn:hover { background: #c7ece0; }
-
-  /* ── Footer ── */
-  .footer {
-    max-width: 560px;
-    margin: 32px auto 0;
-    padding: 0 24px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* ── Animations ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .anim { animation: fadeUp .4s ease forwards; opacity: 0; }
-  .anim-1 { animation-delay: .05s; }
-  .anim-2 { animation-delay: .12s; }
-  .anim-3 { animation-delay: .2s; }
-  .anim-4 { animation-delay: .28s; }
-
-  @media (max-width: 400px) {
-    .two-col { grid-template-columns: 1fr; }
-    .rate-options { grid-template-columns: 1fr; }
-    .trades-grid { grid-template-columns: 1fr; }
-  }
+  .success-inner h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; color: var(--text); margin-bottom: 10px; }
+  .success-inner p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px; }
+  .share-again-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--green-light); color: var(--green-dark); border: 1px solid rgba(29,158,117,0.2); border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; font-family: 'DM Sans', sans-serif; }
+  .footer { max-width: 560px; margin: 32px auto 0; padding: 0 24px; text-align: center; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  @media (max-width: 400px) { .two-col { grid-template-columns: 1fr; } .rate-options { grid-template-columns: 1fr; } .trades-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <div class="header">
-  <div class="header-noise"></div>
   <div class="header-inner">
     <div class="logo-mark">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      </div>
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
       <span class="logo-text">HandyDendy</span>
     </div>
     <div class="header-tag">Abuja · Trusted Trades Network</div>
@@ -527,13 +95,9 @@
   </div>
 </div>
 
-<div class="header-strip">
-  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-  Every referral is verified before activation. No spam, no unvetted workers.
-</div>
+<div class="header-strip">Every referral is verified before activation. No spam, no unvetted workers.</div>
 
-<!-- Trust pills -->
-<div class="trust-row anim anim-1">
+<div class="trust-row">
   <div class="trust-pill"><span class="dot"></span> Plumbers</div>
   <div class="trust-pill"><span class="dot"></span> Electricians</div>
   <div class="trust-pill"><span class="dot"></span> Carpenters</div>
@@ -541,41 +105,27 @@
   <div class="trust-pill"><span class="dot"></span> Abuja-based only</div>
 </div>
 
-<!-- Trades info -->
-<div class="section-label anim anim-2">Trades we're recruiting</div>
-<div class="trades-grid anim anim-2">
+<div class="section-label">Trades we're recruiting</div>
+<div class="trades-grid">
   <div class="trade-card">
     <div class="trade-icon" style="background:#E1F5EE;">🔧</div>
-    <div>
-      <div class="trade-name">Plumber</div>
-      <div class="trade-desc">Pipes, leaks, toilets, water heaters</div>
-    </div>
+    <div><div class="trade-name">Plumber</div><div class="trade-desc">Pipes, leaks, toilets, water heaters</div></div>
   </div>
   <div class="trade-card">
     <div class="trade-icon" style="background:#E6F1FB;">⚡</div>
-    <div>
-      <div class="trade-name">Electrician</div>
-      <div class="trade-desc">Wiring, faults, AC, installations</div>
-    </div>
+    <div><div class="trade-name">Electrician</div><div class="trade-desc">Wiring, faults, AC, installations</div></div>
   </div>
   <div class="trade-card">
     <div class="trade-icon" style="background:#FAEEDA;">🪵</div>
-    <div>
-      <div class="trade-name">Carpenter</div>
-      <div class="trade-desc">Furniture, doors, fittings, wood</div>
-    </div>
+    <div><div class="trade-name">Carpenter</div><div class="trade-desc">Furniture, doors, fittings, wood</div></div>
   </div>
   <div class="trade-card">
     <div class="trade-icon" style="background:#FBEAF0;">🎨</div>
-    <div>
-      <div class="trade-name">Painter</div>
-      <div class="trade-desc">Interior, exterior, touch-ups, POP</div>
-    </div>
+    <div><div class="trade-name">Painter</div><div class="trade-desc">Interior, exterior, touch-ups, POP</div></div>
   </div>
 </div>
 
-<!-- Form -->
-<div class="form-wrap anim anim-3">
+<div class="form-wrap">
   <div class="form-card" id="formCard">
     <div class="form-head">
       <div class="form-head-icon">
@@ -587,11 +137,8 @@
       </div>
     </div>
 
-    <form class="form-body" id="referralForm" onsubmit="handleSubmit(event)">
-
-      <!-- Your details -->
+    <form class="form-body" id="referralForm">
       <div class="section-title">Your details</div>
-
       <div class="two-col">
         <div class="field-group">
           <label>Your name <span class="req">*</span></label>
@@ -604,8 +151,6 @@
       </div>
 
       <div class="divider"></div>
-
-      <!-- Handyman details -->
       <div class="section-title">About the handyman</div>
 
       <div class="two-col">
@@ -632,12 +177,12 @@
       </div>
 
       <div class="field-group">
-        <label>Their area / location in Abuja <span class="req">*</span></label>
+        <label>Their area in Abuja <span class="req">*</span></label>
         <input type="text" id="handymanLocation" placeholder="E.g. Wuse 2, Garki, Gwarinpa, Kubwa…" required>
       </div>
 
       <div class="field-group">
-        <label>How do you know them? <span class="hint">(optional but helpful)</span></label>
+        <label>How do you know them? <span class="hint">(optional)</span></label>
         <select id="relationship">
           <option value="" disabled selected>Select…</option>
           <option value="used_personally">They worked at my home</option>
@@ -649,71 +194,38 @@
       </div>
 
       <div class="divider"></div>
-
-      <!-- Quality rating -->
       <div class="section-title">Your honest rating</div>
 
       <div class="field-group">
-        <label>How would you rate their work quality? <span class="req">*</span></label>
+        <label>Work quality <span class="req">*</span></label>
         <div class="rate-options">
-          <label class="rate-opt">
-            <input type="radio" name="quality" value="excellent" required>
-            <span class="radio-circle"></span>
-            <span class="rate-opt-text">⭐ Excellent</span>
-          </label>
-          <label class="rate-opt">
-            <input type="radio" name="quality" value="good">
-            <span class="radio-circle"></span>
-            <span class="rate-opt-text">👍 Good</span>
-          </label>
-          <label class="rate-opt">
-            <input type="radio" name="quality" value="average">
-            <span class="radio-circle"></span>
-            <span class="rate-opt-text">🤷 Average</span>
-          </label>
-          <label class="rate-opt">
-            <input type="radio" name="quality" value="not_sure">
-            <span class="radio-circle"></span>
-            <span class="rate-opt-text">Not sure yet</span>
-          </label>
+          <label class="rate-opt"><input type="radio" name="quality" value="excellent"><span class="radio-circle"></span><span class="rate-opt-text">⭐ Excellent</span></label>
+          <label class="rate-opt"><input type="radio" name="quality" value="good"><span class="radio-circle"></span><span class="rate-opt-text">👍 Good</span></label>
+          <label class="rate-opt"><input type="radio" name="quality" value="average"><span class="radio-circle"></span><span class="rate-opt-text">🤷 Average</span></label>
+          <label class="rate-opt"><input type="radio" name="quality" value="not_sure"><span class="radio-circle"></span><span class="rate-opt-text">Not sure</span></label>
         </div>
       </div>
 
       <div class="field-group">
-        <label>How reliable are they? <span class="req">*</span></label>
+        <label>Reliability <span class="req">*</span></label>
         <div class="rate-options">
-          <label class="rate-opt">
-            <input type="radio" name="reliability" value="very_reliable" required>
-            <span class="radio-circle"></span>
-            <span class="rate-opt-text">Very reliable</span>
-          </label>
-          <label class="rate-opt">
-            <input type="radio" name="reliability" value="mostly_reliable">
-            <span class="radio-circle"></span>
-            <span class="rate-opt-text">Mostly reliable</span>
-          </label>
-          <label class="rate-opt">
-            <input type="radio" name="reliability" value="sometimes_late">
-            <span class="radio-circle"></span>
-            <span class="rate-opt-text">Sometimes late</span>
-          </label>
-          <label class="rate-opt">
-            <input type="radio" name="reliability" value="not_sure">
-            <span class="radio-circle"></span>
-            <span class="rate-opt-text">Don't know</span>
-          </label>
+          <label class="rate-opt"><input type="radio" name="reliability" value="very_reliable"><span class="radio-circle"></span><span class="rate-opt-text">Very reliable</span></label>
+          <label class="rate-opt"><input type="radio" name="reliability" value="mostly_reliable"><span class="radio-circle"></span><span class="rate-opt-text">Mostly reliable</span></label>
+          <label class="rate-opt"><input type="radio" name="reliability" value="sometimes_late"><span class="radio-circle"></span><span class="rate-opt-text">Sometimes late</span></label>
+          <label class="rate-opt"><input type="radio" name="reliability" value="not_sure"><span class="radio-circle"></span><span class="rate-opt-text">Don't know</span></label>
         </div>
       </div>
 
       <div class="field-group">
         <label>Anything else we should know? <span class="hint">(optional)</span></label>
-        <textarea id="notes" placeholder="E.g. Very honest, always cleans up after himself, fixed our leaking pipes perfectly…"></textarea>
+        <textarea id="notes" placeholder="E.g. Very honest, always cleans up after himself…"></textarea>
       </div>
 
-      <button type="submit" class="submit-btn">
-        <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+      <button type="button" class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
         Submit referral
       </button>
+
       <div class="submit-note">
         We'll reach out to the handyman directly for verification.<br>
         You'll get a thank-you message when they go live on HandyDendy.
@@ -722,123 +234,89 @@
   </div>
 </div>
 
-<!-- Success card -->
 <div class="success-card" id="successCard">
   <div class="success-inner">
     <div class="success-check">
       <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
     </div>
-    <h2>Referral submitted!</h2>
+    <h2>Referral submitted! 🎉</h2>
     <p>Thank you. We'll verify <strong id="successName"></strong> and reach out to them directly. If they join HandyDendy, you'll hear from us.</p>
-    <a href="#" class="share-again-btn" onclick="location.reload(); return false;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      Refer another handyman
-    </a>
+    <a href="#" class="share-again-btn" onclick="location.reload(); return false;">Refer another handyman</a>
   </div>
 </div>
 
-<!-- Footer -->
 <div class="footer">
   <strong>HandyDendy</strong> · Abuja's verified trades platform<br>
   All submissions are confidential. Handymen are contacted only after your referral is reviewed.
 </div>
 
+<!-- Hidden iframe to absorb the form POST response -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
 <script>
-  // Store submissions locally (works without a server)
-  // To connect to a real database, replace the saveToRegistry function below.
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEhw_ITfFgMmigzxNkgT4yj245mQrqUW-gAOr4n134FUca4yClL3ZtHt94K8624Q8a/exec';
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit() {
+    var referrerName  = document.getElementById('referrerName').value.trim();
+    var referrerPhone = document.getElementById('referrerPhone').value.trim();
+    var handymanName  = document.getElementById('handymanName').value.trim();
+    var handymanPhone = document.getElementById('handymanPhone').value.trim();
+    var trade         = document.getElementById('handymanTrade').value;
+    var location      = document.getElementById('handymanLocation').value.trim();
+    var quality       = document.querySelector('input[name="quality"]:checked');
+    var reliability   = document.querySelector('input[name="reliability"]:checked');
+    var notes         = document.getElementById('notes').value.trim();
 
-    const quality = document.querySelector('input[name="quality"]:checked');
-    const reliability = document.querySelector('input[name="reliability"]:checked');
+    if (!referrerName)  { alert('Please enter your name.'); return; }
+    if (!referrerPhone) { alert('Please enter your phone number.'); return; }
+    if (!handymanName)  { alert('Please enter the handyman\'s name.'); return; }
+    if (!handymanPhone) { alert('Please enter the handyman\'s phone number.'); return; }
+    if (!trade)         { alert('Please select their trade.'); return; }
+    if (!location)      { alert('Please enter their area in Abuja.'); return; }
+    if (!quality)       { alert('Please rate their work quality.'); return; }
+    if (!reliability)   { alert('Please rate their reliability.'); return; }
 
-    if (!quality) { alert('Please rate their work quality.'); return; }
-    if (!reliability) { alert('Please rate their reliability.'); return; }
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
 
-    const entry = {
-      id: Date.now(),
-      submittedAt: new Date().toISOString(),
-      referrer: {
-        name: document.getElementById('referrerName').value.trim(),
-        phone: document.getElementById('referrerPhone').value.trim(),
-      },
-      handyman: {
-        name: document.getElementById('handymanName').value.trim(),
-        phone: document.getElementById('handymanPhone').value.trim(),
-        trade: document.getElementById('handymanTrade').value,
-        location: document.getElementById('handymanLocation').value.trim(),
-        relationship: document.getElementById('relationship').value,
-        qualityRating: quality.value,
-        reliabilityRating: reliability.value,
-        notes: document.getElementById('notes').value.trim(),
-      },
-      status: 'pending_review',
-    };
+    var payload = JSON.stringify({
+      handyman_name:  handymanName,
+      handyman_phone: handymanPhone,
+      trade:          trade,
+      location:       location,
+      quality:        quality.value,
+      reliability:    reliability.value,
+      notes:          notes,
+      referrer_name:  referrerName,
+      referrer_phone: referrerPhone
+    });
 
-    saveToRegistry(entry);
-    showSuccess(entry.handyman.name);
+    // Create and submit a hidden form — bypasses CORS completely
+    var form = document.createElement('form');
+    form.setAttribute('method', 'POST');
+    form.setAttribute('action', SCRIPT_URL);
+    form.setAttribute('target', 'hidden_iframe');
+    form.style.display = 'none';
+
+    var field = document.createElement('input');
+    field.setAttribute('type', 'hidden');
+    field.setAttribute('name', 'data');
+    field.setAttribute('value', payload);
+    form.appendChild(field);
+
+    document.body.appendChild(form);
+
+    // Show success after 2 seconds (iframe load is not reliably detectable cross-origin)
+    setTimeout(function() {
+      document.getElementById('formCard').style.display = 'none';
+      document.getElementById('successCard').style.display = 'block';
+      document.getElementById('successName').textContent = handymanName;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 2000);
+
+    form.submit();
   }
-
-function saveToRegistry(entry) {
-    fetch('https://script.google.com/macros/s/AKfycbxJxLofc2xTknbWRyzZvk6BMkcTzfTAsW0_Z00unK11A39-2NyRf9k_JoOVb-ifTN7C/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'text/plain',
-      },
-      body: JSON.stringify({
-        handyman_name: entry.handyman.name,
-        handyman_phone: entry.handyman.phone,
-        trade: entry.handyman.trade,
-        location: entry.handyman.location,
-        quality: entry.handyman.qualityRating,
-        reliability: entry.handyman.reliabilityRating,
-        notes: entry.handyman.notes,
-        referrer_name: entry.referrer.name,
-        referrer_phone: entry.referrer.phone,
-      })
-    }).catch(err => console.error('Sheet save error:', err));
-  }
-
-  function showSuccess(name) {
-    document.getElementById('formCard').style.display = 'none';
-    document.getElementById('successCard').style.display = 'block';
-    document.getElementById('successName').textContent = name;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Admin view: open console and type viewRegistry() to see all submissions
-  window.viewRegistry = function() {
-    const data = JSON.parse(localStorage.getItem('hd_referrals') || '[]');
-    console.table(data.map(d => ({
-      Name: d.handyman.name,
-      Phone: d.handyman.phone,
-      Trade: d.handyman.trade,
-      Location: d.handyman.location,
-      Quality: d.handyman.qualityRating,
-      Reliability: d.handyman.reliabilityRating,
-      ReferredBy: d.referrer.name,
-      Date: new Date(d.submittedAt).toLocaleDateString(),
-    })));
-    return data;
-  };
-
-  window.exportCSV = function() {
-    const data = JSON.parse(localStorage.getItem('hd_referrals') || '[]');
-    const rows = [
-      ['Handyman Name','Phone','Trade','Location','Quality','Reliability','Notes','Referred By','Referrer Phone','Date'],
-      ...data.map(d => [
-        d.handyman.name, d.handyman.phone, d.handyman.trade, d.handyman.location,
-        d.handyman.qualityRating, d.handyman.reliabilityRating, d.handyman.notes,
-        d.referrer.name, d.referrer.phone, new Date(d.submittedAt).toLocaleDateString()
-      ])
-    ];
-    const csv = rows.map(r => r.map(v => `"${(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href = url; a.download = 'handydendy-referrals.csv'; a.click();
-  };
 </script>
 
 </body>
