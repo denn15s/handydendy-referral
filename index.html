@@ -783,6 +783,10 @@
 function saveToRegistry(entry) {
     fetch('https://script.google.com/macros/s/AKfycbxJxLofc2xTknbWRyzZvk6BMkcTzfTAsW0_Z00unK11A39-2NyRf9k_JoOVb-ifTN7C/exec', {
       method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
       body: JSON.stringify({
         handyman_name: entry.handyman.name,
         handyman_phone: entry.handyman.phone,
