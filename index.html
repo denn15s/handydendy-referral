@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abuja Trusted Trades — Refer a Handyman</title>
+<title>Refer a Trusted Handyman — Abuja</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -37,4 +37,213 @@
   .trade-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
   .form-wrap { max-width: 560px; margin: 24px auto 0; padding: 0 24px; }
   .form-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-  .form-head { background: var(--green-light); border-bottom: 1px solid rgba(29,158,117,0.15); padding: 18px 24px; display: flex; align-ite
+  .form-head { background: var(--green-light); border-bottom: 1px solid rgba(29,158,117,0.15); padding: 18px 24px; display: flex; align-items: center; gap: 12px; }
+  .form-head-icon { width: 36px; height: 36px; background: var(--green); border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .form-head-icon svg { width: 18px; height: 18px; fill: white; }
+  .form-head-text h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: var(--green-dark); }
+  .form-head-text p { font-size: 12px; color: #0F6E56; margin-top: 2px; }
+  .form-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+  .field-group { display: flex; flex-direction: column; gap: 6px; }
+  label { font-size: 13px; font-weight: 500; color: var(--text); display: flex; align-items: center; gap: 5px; }
+  label .req { color: var(--green); font-size: 15px; line-height: 1; }
+  label .hint { font-weight: 300; color: var(--text-muted); font-size: 12px; margin-left: 2px; }
+  input, select, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text); background: white; transition: border-color .15s; outline: none; -webkit-appearance: none; appearance: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(29,158,117,0.12); }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b67' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .rate-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .rate-opt { border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 14px; cursor: pointer; transition: all .15s; display: flex; align-items: center; gap: 8px; }
+  .rate-opt input[type="radio"] { display: none; }
+  .rate-opt .radio-circle { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; transition: all .15s; display: flex; align-items: center; justify-content: center; }
+  .rate-opt input:checked ~ .radio-circle { background: var(--green); border-color: var(--green); }
+  .rate-opt input:checked ~ .radio-circle::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: white; }
+  .rate-opt:has(input:checked) { border-color: var(--green); background: var(--green-light); }
+  .rate-opt-text { font-size: 13px; color: var(--text); }
+  .divider { height: 1px; background: var(--border); margin: 4px 0; }
+  .section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; padding-top: 4px; }
+  .submit-btn { width: 100%; padding: 16px; background: var(--green); color: white; border: none; border-radius: 12px; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; transition: background .15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .submit-btn:hover { background: #178a65; }
+  .submit-btn:disabled { background: #a0cfc2; cursor: not-allowed; }
+  .submit-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; line-height: 1.5; }
+  .success-card { display: none; max-width: 560px; margin: 24px auto 0; padding: 0 24px; }
+  .success-inner { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 24px; text-align: center; }
+  .success-check { width: 64px; height: 64px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .success-check svg { width: 32px; height: 32px; fill: var(--green); }
+  .success-inner h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; color: var(--text); margin-bottom: 10px; }
+  .success-inner p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px; }
+  .share-again-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--green-light); color: var(--green-dark); border: 1px solid rgba(29,158,117,0.2); border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; font-family: 'DM Sans', sans-serif; }
+  .footer { max-width: 560px; margin: 32px auto 0; padding: 0 24px; text-align: center; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  @media (max-width: 400px) { .two-col { grid-template-columns: 1fr; } .rate-options { grid-template-columns: 1fr; } .trades-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-tag">Abuja · Trusted Trades Network</div>
+    <h1>Know a great<br><span>handyman?</span><br>Tell us about them.</h1>
+    <p class="header-sub">We're building Abuja's most trusted skilled trades network. If someone fixed your home right, we want them on our platform — verified, rewarded, and working full-time.</p>
+  </div>
+</div>
+
+<div class="header-strip">Every referral is verified before activation. No spam, no unvetted workers.</div>
+
+<div class="trust-row">
+  <div class="trust-pill"><span class="dot"></span> Plumbers</div>
+  <div class="trust-pill"><span class="dot"></span> Electricians</div>
+  <div class="trust-pill"><span class="dot"></span> Carpenters</div>
+  <div class="trust-pill"><span class="dot"></span> Painters</div>
+  <div class="trust-pill"><span class="dot"></span> Abuja-based only</div>
+</div>
+
+<div class="section-label">Trades we're recruiting</div>
+<div class="trades-grid">
+  <div class="trade-card">
+    <div class="trade-icon" style="background:#E1F5EE;">🔧</div>
+    <div><div class="trade-name">Plumber</div><div class="trade-desc">Pipes, leaks, toilets, water heaters</div></div>
+  </div>
+  <div class="trade-card">
+    <div class="trade-icon" style="background:#E6F1FB;">⚡</div>
+    <div><div class="trade-name">Electrician</div><div class="trade-desc">Wiring, faults, AC, installations</div></div>
+  </div>
+  <div class="trade-card">
+    <div class="trade-icon" style="background:#FAEEDA;">🪵</div>
+    <div><div class="trade-name">Carpenter</div><div class="trade-desc">Furniture, doors, fittings, wood</div></div>
+  </div>
+  <div class="trade-card">
+    <div class="trade-icon" style="background:#FBEAF0;">🎨</div>
+    <div><div class="trade-name">Painter</div><div class="trade-desc">Interior, exterior, touch-ups, POP</div></div>
+  </div>
+</div>
+
+<div class="form-wrap">
+  <div class="form-card" id="formCard">
+    <div class="form-head">
+      <div class="form-head-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="form-head-text">
+        <h3>Refer a skilled tradesperson</h3>
+        <p>Takes less than 2 minutes · Your info stays private</p>
+      </div>
+    </div>
+
+    <form class="form-body" id="referralForm"
+          action="https://formspree.io/f/xnjwwwop"
+          method="POST">
+
+      <div class="section-title">Your details</div>
+      <div class="two-col">
+        <div class="field-group">
+          <label>Your name <span class="req">*</span></label>
+          <input type="text" name="referrer_name" placeholder="E.g. Amaka Obi" required>
+        </div>
+        <div class="field-group">
+          <label>Your phone <span class="req">*</span></label>
+          <input type="tel" name="referrer_phone" placeholder="08XXXXXXXXX" required>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="section-title">About the handyman</div>
+
+      <div class="two-col">
+        <div class="field-group">
+          <label>Their name <span class="req">*</span></label>
+          <input type="text" name="handyman_name" placeholder="Full name" required>
+        </div>
+        <div class="field-group">
+          <label>Their phone <span class="req">*</span></label>
+          <input type="tel" name="handyman_phone" placeholder="08XXXXXXXXX" required>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Trade / Skill <span class="req">*</span></label>
+        <select name="trade" required>
+          <option value="" disabled selected>Select their main trade</option>
+          <option value="Plumber">Plumber</option>
+          <option value="Electrician">Electrician</option>
+          <option value="Carpenter">Carpenter</option>
+          <option value="Painter">Painter</option>
+          <option value="Multiple trades">Multiple trades</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Their area in Abuja <span class="req">*</span></label>
+        <input type="text" name="location" placeholder="E.g. Wuse 2, Garki, Gwarinpa, Kubwa…" required>
+      </div>
+
+      <div class="field-group">
+        <label>How do you know them? <span class="hint">(optional)</span></label>
+        <select name="relationship">
+          <option value="" disabled selected>Select…</option>
+          <option value="They worked at my home">They worked at my home</option>
+          <option value="Family member">Family member</option>
+          <option value="A trusted friend recommended them">A trusted friend recommended them</option>
+          <option value="My neighbour used them">My neighbour used them</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="divider"></div>
+      <div class="section-title">Your honest rating</div>
+
+      <div class="field-group">
+        <label>Work quality <span class="req">*</span></label>
+        <div class="rate-options">
+          <label class="rate-opt"><input type="radio" name="quality" value="Excellent" required><span class="radio-circle"></span><span class="rate-opt-text">⭐ Excellent</span></label>
+          <label class="rate-opt"><input type="radio" name="quality" value="Good"><span class="radio-circle"></span><span class="rate-opt-text">👍 Good</span></label>
+          <label class="rate-opt"><input type="radio" name="quality" value="Average"><span class="radio-circle"></span><span class="rate-opt-text">🤷 Average</span></label>
+          <label class="rate-opt"><input type="radio" name="quality" value="Not sure"><span class="radio-circle"></span><span class="rate-opt-text">Not sure</span></label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Reliability <span class="req">*</span></label>
+        <div class="rate-options">
+          <label class="rate-opt"><input type="radio" name="reliability" value="Very reliable" required><span class="radio-circle"></span><span class="rate-opt-text">Very reliable</span></label>
+          <label class="rate-opt"><input type="radio" name="reliability" value="Mostly reliable"><span class="radio-circle"></span><span class="rate-opt-text">Mostly reliable</span></label>
+          <label class="rate-opt"><input type="radio" name="reliability" value="Sometimes late"><span class="radio-circle"></span><span class="rate-opt-text">Sometimes late</span></label>
+          <label class="rate-opt"><input type="radio" name="reliability" value="Don't know"><span class="radio-circle"></span><span class="rate-opt-text">Don't know</span></label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Anything else we should know? <span class="hint">(optional)</span></label>
+        <textarea name="notes" placeholder="E.g. Very honest, always cleans up after himself…"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+        Submit referral
+      </button>
+
+      <div class="submit-note">
+        We'll reach out to the handyman directly for verification.<br>
+        You'll get a thank-you message when they go live on the platform.
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="success-card" id="successCard">
+  <div class="success-inner">
+    <div class="success-check">
+      <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <h2>Referral submitted! 🎉</h2>
+    <p>Thank you. We'll verify the handyman and reach out to them directly.</p>
+    <a href="#" class="share-again-btn" onclick="location.reload(); return false;">Refer another handyman</a>
+  </div>
+</div>
+
+<div class="footer">
+  Abuja's verified trades platform<br>
+  All submissions are confidential. Handymen are contacted only after your referral is reviewed.
+</div>
+
+</body>
+</html>
