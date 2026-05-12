@@ -780,17 +780,21 @@
     showSuccess(entry.handyman.name);
   }
 
-  function saveToRegistry(entry) {
-    // Save to browser localStorage for now
-    // IMPORTANT: See the guide below for connecting to Google Sheets or Supabase
-    try {
-      const existing = JSON.parse(localStorage.getItem('hd_referrals') || '[]');
-      existing.push(entry);
-      localStorage.setItem('hd_referrals', JSON.stringify(existing));
-      console.log('Saved referral:', entry);
-    } catch(err) {
-      console.error('Save error:', err);
-    }
+function saveToRegistry(entry) {
+    fetch('https://script.google.com/macros/s/AKfycbySM_wGvI6h2S973r5RPN1HFxSRzdUuBgIC8OgGulcR4oXVLOiFwH5_C8Se_5FVbO3l/exec', {
+      method: 'POST',
+      body: JSON.stringify({
+        handyman_name: entry.handyman.name,
+        handyman_phone: entry.handyman.phone,
+        trade: entry.handyman.trade,
+        location: entry.handyman.location,
+        quality: entry.handyman.qualityRating,
+        reliability: entry.handyman.reliabilityRating,
+        notes: entry.handyman.notes,
+        referrer_name: entry.referrer.name,
+        referrer_phone: entry.referrer.phone,
+      })
+    }).catch(err => console.error('Sheet save error:', err));
   }
 
   function showSuccess(name) {
